@@ -36,14 +36,20 @@ function setNewImg(targetImgId){
 }
 
 
-var requestId = 0;
+function generateId(len) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charsLen = chars.length;
+
+  var res = "";
+  for (var i =0; i < len; i++){
+    res += chars.charAt(Math.floor(Math.random() * charsLen));
+  }
+
+  return res;
+}
+
 function changeImg(){
-    httpGetAsync(targetImgControllerFile + "?v=" + requestId, setNewImg);
-    if(requestId > 100000){
-      requestId = 0;
-    }else{
-      requestId++;
-    }
+    httpGetAsync(targetImgControllerFile + "?v=" + generateId(20), setNewImg);
 
     setTimeout(changeImg, 5000);
 }
