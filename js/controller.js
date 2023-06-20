@@ -31,7 +31,7 @@ function httpGetAsync(url, callback)
 sharedImg = document.getElementById("Img");
 
 function setNewImg(targetImgId){
-  sharedImg.src = imagesSrcLocation + ".png";
+  sharedImg.src = imagesSrcLocation + targetImgId + ".png";
 }
 
 function changeImg(){
