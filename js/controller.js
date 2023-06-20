@@ -20,6 +20,7 @@ var targetImgControllerFile="https://raw.githubusercontent.com/NULL-SIL/ContentD
 function httpGetAsync(url, callback)
 {
     var xmlHttp = new XMLHttpRequest();
+
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             callback(xmlHttp.responseText);
@@ -34,8 +35,15 @@ function setNewImg(targetImgId){
   sharedImg.src = imagesSrcLocation + targetImgId + ".png";
 }
 
+
+var requestId = 0;
 function changeImg(){
-    httpGetAsync(targetImgControllerFile, setNewImg);
+    httpGetAsync(targetImgControllerFile + "?v=" + requestId, setNewImg);
+    if(requestId > 100000){
+      requestId = 0;
+    }else{
+      requestId++;
+    }
 
     setTimeout(changeImg, 5000);
 }
