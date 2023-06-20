@@ -28,7 +28,7 @@ function httpGetAsync(url, callback)
     xmlHttp.send(null);
 }
 
-sharedImg = document.getElementById("sharedImg");
+sharedImg = document.getElementById("Img");
 
 function setNewImg(targetImgId){
   sharedImg.src = imagesSrcLocation + ".png";
